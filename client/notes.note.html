@@ -1,7 +1,7 @@
 <template name="note">
     <div class="note">
-        Title : {{title}},
-        Description : {{description}},
-        Tags : {{tag}},
+        <div class="tags"> {{#each tags}}<span class="tag">{{name}}</span>{{/each}}</div>
+        <div class='title'>{{title}}</div>
+        <div class="description">{{description}}</div>
     </div>
 </template>
