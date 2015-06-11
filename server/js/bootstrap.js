@@ -58,11 +58,12 @@ Meteor.startup(function(){
       for (var i=0;i<500;i++) {
           note.title = title + Math.round(Math.random()*2);
           var tagCount = Math.round(Math.random() * 2) % tags.length;
+          tagCount  = tagCount == 0 ? 1 : tagCount;
           var noteTags = [];
           for(var j=0;j<tagCount;j++){
             var index = Math.round(Math.random() * 2) % tags.length;
             var tag = tags[index];
-            noteTags.insertUnique({"name" :tag});
+            noteTags.push({"name" :tag});
           }
           note.tags = noteTags;
           Notes.insert(note);
