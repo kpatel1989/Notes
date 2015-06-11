@@ -50,7 +50,12 @@ Meteor.startup(function(){
             "created-on" : "12-Apr-2015"
         },
     ];
-    var tags = ["notes","note","mumbai","linkwok","tag"];
+    var tags = [
+      {"name" : "notes"},
+      {"name" : "note"},
+      {"name" : "mumbai"},
+      {"name" : "linkwok"},
+      {"name" : "tag"}];
     if (Notes.find().count() == 0){
       i = 0;
       var note = defaultNotes[0];
@@ -63,7 +68,8 @@ Meteor.startup(function(){
           for(var j=0;j<tagCount;j++){
             var index = Math.round(Math.random() * 2) % tags.length;
             var tag = tags[index];
-            noteTags.push({"name" :tag});
+            if (tags.indexOf(tag) == -1)
+              noteTags.push(tag);
           }
           note.tags = noteTags;
           Notes.insert(note);

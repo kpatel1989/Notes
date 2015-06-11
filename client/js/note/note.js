@@ -8,13 +8,17 @@ Deps.autorun(function() {
 Template.notes.helpers({
     notes : function(){
         return Notes.find();
+    },
+    moreResults : function() {
+        return !(Notes.find().count() < Session.get("itemsLimit"));
     }
 });
 
-Template.notes.moreResults = function() {
-    return !(Notes.find().count() < Session.get("itemsLimit"));
-}
-
+Template.tagholder.helpers({
+  tags : function(){
+    return Tags.find();
+  }
+})
 
 function showMoreVisible() {
 		var threshold, target = $('#showMoreResults');
